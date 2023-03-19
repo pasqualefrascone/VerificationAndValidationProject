@@ -1,0 +1,24 @@
+services:
+  server:
+    build: ./server
+    depends_on:
+      - postgres
+#    ports:
+#      - 5000:5000
+  client:
+    build: ./client
+    depends_on:
+    - server
+    - postgres
+
+  postgres:
+    build: ./postgres
+#    image: 'postgres'
+    volumes:
+      - data:/var/lib/postgres/data
+    env_file:
+      - ./env/postgres.env
+volumes:
+  data:
+
+      
