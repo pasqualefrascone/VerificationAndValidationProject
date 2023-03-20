@@ -40,7 +40,7 @@ protected:
 	virtual int bytesCanContiguouslyWrite() final{
 
 		if (newest>oldest) return fifoSize-newest; //write from newest until fifosize
-		else if(newest<oldest) return oldest-newest; //write from newesto until oldest
+		else if(newest<oldest) return oldest-newest; //write from newest until oldest
 		else /*if(newest==oldest)*/{
 				bool full=occupiedBytes==fifoSize;
 				bool empt=occupiedBytes==0;
