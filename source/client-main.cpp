@@ -20,7 +20,7 @@ int main() {
 
 
 
-	MyClient client ("progetto_frascone-server-1", 5000, 100,100,false,pgLogger);
+	MyClient client ("server1", 5000, 100,100,false,pgLogger);
 
 	client.start();
 

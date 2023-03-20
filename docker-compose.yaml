@@ -1,18 +1,21 @@
 services:
   server:
     build: ./server
+    container_name: server1
     depends_on:
       - postgres
 #    ports:
 #      - 5000:5000
   client:
     build: ./client
+    container_name: client1
     depends_on:
     - server
     - postgres
 
   postgres:
     build: ./postgres
+    container_name: pdb
 #    image: 'postgres'
     volumes:
       - data:/var/lib/postgres/data

@@ -20,4 +20,5 @@ RUN g++ -L/usr/lib/x86_64-linux-gnu -o "client" ./source/client-main.cpp    -lpq
 #ENTRYPOINT [ "bash" ]
 #CMD ["/usr/local/bin/bash"]
 
-CMD sleep 20 && echo endsleep && ./client
+echo client started
+#CMD sleep 30 && echo endsleep && ./client
