@@ -11,7 +11,7 @@ COPY ./source ./source
 
 
 RUN ln  -s /usr/lib/x86_64-linux-gnu/libpq.so.5.14 /usr/lib/x86_64-linux-gnu/libpq.so
-RUN g++ -L/usr/lib/x86_64-linux-gnu -o "client" ./source/client-main.cpp    -lpq
+RUN g++ -L/usr/lib/x86_64-linux-gnu -o "client" ./source/client-main.cpp  -lpq
 
 #RUN apt-get update && apt-get -y install g++ && apt-get -y install make 
 
@@ -20,5 +20,6 @@ RUN g++ -L/usr/lib/x86_64-linux-gnu -o "client" ./source/client-main.cpp    -lpq
 #ENTRYPOINT [ "bash" ]
 #CMD ["/usr/local/bin/bash"]
 
-echo client started
+#echo client started
 #CMD sleep 30 && echo endsleep && ./client
+CMD sleep 99999999999

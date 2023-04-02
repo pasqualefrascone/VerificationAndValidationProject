@@ -39,7 +39,7 @@ public:
 		PGcommand *pgcomm;
     	char timeStamp[27];//Util::getTimeStamp(timeStamp);
 
-		while(true){
+		while(!cin.fail()){
 			switch (pc) {
 				case 0:
 					std::cout<<"inserisci operando 1: ";

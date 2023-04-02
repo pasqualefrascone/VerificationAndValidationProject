@@ -85,7 +85,7 @@ public:
 		conn=PQconnectdbParams(keywords, values, 1);
 
 		if (PQstatus(this->conn)!=CONNECTION_OK){
-			co
+			
 			throw std::runtime_error("PostgreLogger: connection with postgres dbms failed!");
 		}
 
