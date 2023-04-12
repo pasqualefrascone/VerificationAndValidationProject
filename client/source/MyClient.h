@@ -12,6 +12,7 @@
 #include "connprotocol/Client.h"
 #include "loggers/PostgreLogger.h"
 #include "utils/PostGresOid.h"
+using namespace std;
 class MyClient: public Client {
 private:
 	PostgreLogger *pgLogger;
@@ -25,13 +26,16 @@ public:
 
 	virtual ~MyClient(){if(pgLogger!=NULL)delete pgLogger;};
 
+	virtual void ignoreLine(){
+		    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
 
 	virtual void start(){
 		//bs->stopReadLoop();bs->stopWriteLoop();
 		//std::cout<<"Myclient: started..."<<std::endl;
 		//int command=-1;
 		int pc=0;
-		int op1,op2,res;
+		int op1{},op2{},res{};
 		char logmsg[40];
 
 
@@ -39,12 +43,14 @@ public:
 		PGcommand *pgcomm;
     	char timeStamp[27];//Util::getTimeStamp(timeStamp);
 
-		while(!cin.fail()){
+		while(true){
 			switch (pc) {
 				case 0:
 					std::cout<<"inserisci operando 1: ";
 					std::cin>>op1;
-					std::cout<<std::endl;
+
+					//std::cout<<std::endl;
+					//if(std::cin.fail()){std::cin.clear();ignoreLine();std::cout<<"Illegal Input! :"<<std::cin.fail();<<std::endl;continue;}
 					bs->addOnWriteBuffer(op1);
 					pc=30;
 					break;
@@ -69,7 +75,9 @@ public:
 				case 1:
 					std::cout<<"inserisci operando 2: ";
 					std::cin>>op2;
-					std::cout<<std::endl;
+					//std::cout<<std::endl;
+					//if(std::cin.fail()){std::cin.clear();ignoreLine();std::cout<<"Illegal Input! "<<std::endl;continue;}
+
 					bs->addOnWriteBuffer(op2);
 					pc=40;
 					break;
